@@ -1,11 +1,4 @@
 resource "aws_security_group" "webserver_security_group" { 
-
-    ingress {
-        from_port = 22
-        to_port = 22
-        protocol = "tcp"
-        cidr_blocks = [ "79.178.152.128/32"]
-    }
     ingress {
         from_port = 80
         to_port = 80
