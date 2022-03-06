@@ -32,6 +32,7 @@ build {
   sources = [
     "source.amazon-ebs.ubuntu"
   ]
+
   provisioner "shell" {
     inline = [
       "sudo apt-get update",
@@ -39,8 +40,8 @@ build {
       "sudo apt-get install -y nginx",
       "sudo systemctl start nginx",
       "sudo systemctl enable  nginx",
-      "echo Welcome to Grandpas Whiskey | sudo tee /var/www/html/index.html",
-
+      "AWS_INSTANCE_HOSTNAME=`curl -s http://169.254.169.254/latest/meta-data/public-hostname`",
+      "echo Welcome to Grandpa\\'s Whiskey - $AWS_INSTANCE_HOSTNAME | sudo tee /var/www/html/index.html",
     ]
   }
 }
